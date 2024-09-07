@@ -22,5 +22,48 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas na s
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/pdvapi.git
+   git clone https://github.com/guilhermeoln/pdvapi.git
    cd pdvapi
+
+2. Instale as dependências:
+
+    Com NPM:
+
+    ```bash
+    npm install
+    ```
+
+    Ou com Yarn:
+
+    ```bash
+    yarn install
+    ```
+
+4. Execute as migrações do banco de dados:
+
+    ```bash
+    yarn sequelize db:migrate
+    ```
+
+5. Execute o projeto:
+
+    Para iniciar o servidor de desenvolvimento:
+
+    Com NPM:
+
+    ```bash
+    npm run dev
+    ```
+
+    Ou com Yarn:
+
+    ```bash
+    yarn dev
+    ```
+
+    O servidor estará disponível em `http://localhost:3333`.
+
+## Scripts úteis
+
+- `npm run dev` ou `yarn dev`: Inicia o servidor com hot-reloading (usando nodemon).
+- `yarn sequelize db:migrate`: Executa as migrações para criar as tabelas no banco de dados.
