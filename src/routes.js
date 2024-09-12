@@ -14,5 +14,6 @@ routes.delete("/products/:id", ProductController.deleteProduct);
 // TODO: EDITAR USUÁRIO E BUSCAR POR ID
 routes.get("/users", UserController.users);
 routes.post("/users", UserController.createUser);
+routes.delete("/users/:id", UserController.deleteUser);
 
 export default routes;
