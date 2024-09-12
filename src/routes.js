@@ -1,16 +1,18 @@
 import { Router } from "express";
-import {
-  createProduct,
-  deleteProduct,
-  productById,
-  products,
-} from "./controllers/productController";
+import * as ProductController from "./controllers/productController";
+import * as UserController from "./controllers/userController";
 
 const routes = new Router();
 
-routes.get("/products", products);
-routes.get("/products/:id", productById);
-routes.post("/products", createProduct);
-routes.delete("/products/:id", deleteProduct);
+// TODO: EDITAR PRODUTO
+
+routes.get("/products", ProductController.products);
+routes.get("/products/:id", ProductController.productById);
+routes.post("/products", ProductController.createProduct);
+routes.delete("/products/:id", ProductController.deleteProduct);
+
+// TODO: EDITAR USUÁRIO E BUSCAR POR ID
+routes.get("/users", UserController.users);
+routes.post("/users", UserController.createUser);
 
 export default routes;
