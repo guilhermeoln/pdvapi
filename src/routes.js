@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as ProductController from "./controllers/productController";
 import * as UserController from "./controllers/userController";
+import * as SessionController from "./controllers/sessionController";
 
 const routes = new Router();
 
@@ -15,5 +16,7 @@ routes.delete("/products/:id", ProductController.deleteProduct);
 routes.get("/users", UserController.users);
 routes.post("/users", UserController.createUser);
 routes.delete("/users/:id", UserController.deleteUser);
+
+routes.post("/session", SessionController.session);
 
 export default routes;
