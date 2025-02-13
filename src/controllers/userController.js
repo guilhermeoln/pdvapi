@@ -26,6 +26,36 @@ export const createUser = async (req, res) => {
   }
 };
 
+export const userById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "Usuário não encontrado." });
+    }
+
+    res.json(user);
+  } catch (error) {
+    const { message } = error;
+    res.status(500).json({ message });
+  }
+};
+
+export const editUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await userValidation.validate(req.body);
+
+    await User.update(req.body, { where: { id } });
+
+    res.send();
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;

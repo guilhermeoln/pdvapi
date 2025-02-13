@@ -5,6 +5,10 @@ import jwt from "jsonwebtoken";
 const dotenv = require("dotenv");
 dotenv.config();
 
+const jwtConfig = {
+  expiresIn: "7d",
+};
+
 export const session = async (req, res) => {
   try {
     await sessionValidation.validate(req.body);
@@ -26,9 +30,7 @@ export const session = async (req, res) => {
     }
 
     res.json({
-      token: jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
-        expiresIn: "7d",
-      }),
+      token: jwt.sign({ id }, process.env.JWT_SECRET_KEY, jwtConfig),
     });
   } catch (error) {
     const { message } = error;

@@ -23,13 +23,26 @@ export const createProduct = async (req, res) => {
   }
 };
 
+export const editProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await productValidation.validate(req.body);
+
+    await Product.update(req.body, { where: { id } });
+
+    res.send();
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const productById = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findByPk(id);
 
     if (!product) {
-      return res.status(401).json({ message: "Produto não encontrado." });
+      return res.status(404).json({ message: "Produto não encontrado." });
     }
 
     res.json(product);
@@ -44,7 +57,7 @@ export const deleteProduct = async (req, res) => {
     const product = await Product.findByPk(id);
 
     if (!product) {
-      return res.status(401).json({ message: "Produto não encontrado." });
+      return res.status(404).json({ message: "Produto não encontrado." });
     }
 
     await product.destroy();
