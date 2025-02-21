@@ -3,6 +3,7 @@ import * as ProductController from "./controllers/productController";
 import * as UserController from "./controllers/userController";
 import * as SessionController from "./controllers/sessionController";
 import * as SectorController from "./controllers/sectorController";
+import * as SaleController from "./controllers/saleController";
 import verifyToken from "./middlewares/verifyToken";
 
 const routes = new Router();
@@ -26,5 +27,10 @@ routes.post("/sectors", verifyToken, SectorController.createSector);
 routes.put("/sectors/:id", verifyToken, SectorController.editSector);
 routes.get("/sectors/:id", verifyToken, SectorController.sectorById);
 routes.delete("/sectors/:id", verifyToken, SectorController.deleteSector);
+
+routes.get("/sales", verifyToken, SaleController.sales);
+routes.post("/sales", verifyToken, SaleController.createSale);
+//routes.get("/sales/:id", verifyToken, SectorController.saleById);
+//routes.delete("/sales/:id", verifyToken, SectorController.deleteSale);
 
 export default routes;
